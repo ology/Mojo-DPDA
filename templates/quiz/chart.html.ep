@@ -46,7 +46,7 @@
 </div>
 
 <p class="mt-4">Link to the question file: <a href="<%= url_for('/dpda-questions.txt') %>">DPDA Questions</a></p>
-<p>Link to the code: <a href="https://github.com/ology/DPDA">DPDA</a></p>
+<p>Link to the code: <a href="https://github.com/ology/Mojo-DPDA">DPDA</a></p>
 
 <h3 class="mt-4">Extreme Cases</h3>
 <div class="row g-3">
