@@ -214,7 +214,7 @@ sub _order_category ($self, $order, $quiz) {
 }
 
 sub _draw_chart ($self, $size, $order, $results, $discord) {
-    my $graph = GD::Graph::bars->new;
+    my $graph = GD::Graph::bars->new(500, 400);
     $graph->set(
         title         => 'Results',
         x_label       => 'Categories',
