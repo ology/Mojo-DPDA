@@ -6,5 +6,5 @@
 cpanm --installdeps .
 morbo script/dpda.pl
 # or:
-hypnotoad script/dpda.pl
+hypnotoad script/dpda.pl -s ; hypnotoad script/dpda.pl
 ```
