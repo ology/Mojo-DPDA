@@ -223,6 +223,8 @@ sub _draw_chart ($self, $size, $order, $results, $discord) {
         y_max_value   => $size,
         y_tick_number => $size,
         y_label_skip  => 1,
+        bgclr             => 'white',
+        transparent       => 0,
         x_labels_vertical => 1,
         textclr           => 'black',
         labelclr          => 'black',
