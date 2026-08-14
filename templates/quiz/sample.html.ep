@@ -74,6 +74,6 @@ at its maximum.
     rows      => $build_rows->(\%all_disorder_scores) %>
 
 <p class="mt-4">Link to the question file: <a href="<%= url_for('/dpda-questions.txt') %>">DPDA Questions</a></p>
-<p>Link to the code: <a href="https://github.com/ology/DPDA">DPDA</a></p>
+<p>Link to the code: <a href="https://github.com/ology/Mojo-DPDA">DPDA</a></p>
 
 <p class="mt-3 fw-bold">* REMEMBER to save this result page. *</p>
