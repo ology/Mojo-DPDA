@@ -22,6 +22,12 @@ sub startup ($self) {
 
     my $config = $self->plugin('Config');
 
+    my $log = Mojo::Log->new(
+        path  => $config->{log_path},
+        level => $config->{log_level},
+    );
+    $self->log($log);
+
     $self->sessions->cookie_name('dpda.session');
     $self->sessions->default_expiration(3600);    # 1 hour is plenty for a quiz
 
