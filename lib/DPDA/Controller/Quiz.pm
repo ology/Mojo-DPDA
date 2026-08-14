@@ -124,7 +124,8 @@ sub chart ($self) {
 
     my %diff = map { $_ => $average{$_} - $norm_discord{$_} } keys %average;
 
-    my $freq = Statistics::Frequency->new(\%diff);
+    my %diff_for_prop = map { $_ => $diff{$_} > 0 ? $diff{$_} : 0 } keys %diff;
+    my $freq = Statistics::Frequency->new(\%diff_for_prop);
     my %prop = $freq->proportional_frequencies;
 
     # Format for display
