@@ -43,10 +43,13 @@
 <%= content_for scripts => begin %>
 <script>
 $(function () {
-    // Progressive enhancement only - the "required" attribute on the
-    // radios already enforces an answer via native browser validation,
-    // so the button works even if this script never runs.
+    // Disable the button until an answer is picked. This is applied here
+    // (rather than baked into the button's HTML) so the form still works
+    // via native "required" validation even if this script fails to load.
+    var $submit = $('#submit').prop('disabled', true);
+
     $('input[name="answer"]').on('change', function () {
+        $submit.prop('disabled', false);
         $(this).closest('.answer-scale').find('.form-check-label').removeClass('fw-bold text-primary');
         $(this).next('label').addClass('fw-bold text-primary');
     });
