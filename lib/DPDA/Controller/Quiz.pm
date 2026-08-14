@@ -222,12 +222,13 @@ sub _draw_chart ($self, $size, $order, $results, $discord) {
         y_max_value   => $size,
         y_tick_number => $size,
         y_label_skip  => 1,
+        x_labels_vertical => 1,
     ) or die 'Can\'t set graph: ' . $graph->error;
 
     my @names   = sort { $order->{$a} <=> $order->{$b} } keys %$order;
     my @results = map { $results->{$_} } @names;
     my @discord = map { $discord->{$_} } @names;
-    @names      = map { ucfirst substr $_, 0, 4 } @names;
+    @names      = map { ucfirst $_ } @names;
 
     my $gd = $graph->plot([ \@names, \@results, \@discord ])
         or die $graph->error;
