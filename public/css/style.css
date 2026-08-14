@@ -1,0 +1,17 @@
+/* Small overrides layered on top of Bootstrap 5 -
+   most of the original stylesheet's rules (fonts, borders,
+   the #content box) are now handled by Bootstrap's own utilities. */
+
+body {
+    background-color: #e5e4e2;
+}
+
+.answer-scale .form-check {
+    flex: 1 1 0;
+}
+
+.answer-scale .form-check-input {
+    display: block;
+    margin: 0 auto 0.25rem auto;
+    float: none;
+}

@@ -1,0 +1,20 @@
+paranoid 1 +|I often suspect that others are trying to deceive or exploit me
+paranoid 2 +|I find it hard to confide in other people
+schizoid 1 +|I prefer solitary activities to spending time with others
+schizoid 2 +|I rarely experience strong emotions
+schizotypal 1 +|I sometimes have odd beliefs that influence my behavior
+schizotypal 2 +|I feel anxious in social situations even with familiar people
+antisocial 1 +|I have broken rules or laws without much concern
+antisocial 2 +|I act on impulse without planning ahead
+borderline 1 +|My relationships tend to be intense and unstable
+borderline 2 +|My mood can shift dramatically within a single day
+histrionic 1 +|I feel uncomfortable when I am not the center of attention
+histrionic 2 +|I express my emotions in a very dramatic way
+narcissistic 1 +|I believe I am more important than most people around me
+narcissistic 2 +|I expect other people to recognize my achievements
+avoidant 1 +|I avoid activities that involve significant interpersonal contact
+avoidant 2 +|I am reluctant to take personal risks
+dependent 1 +|I find it hard to make everyday decisions without advice from others
+dependent 2 +|I go to great lengths to obtain support from others
+OC 1 +|I am preoccupied with details, rules, and order
+OC 2 +|I am reluctant to delegate tasks to other people

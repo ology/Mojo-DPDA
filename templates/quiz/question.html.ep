@@ -1,0 +1,55 @@
+% layout 'default';
+
+<p>Progress: <%= $progress %> / <%= $total_questions %></p>
+
+<div class="progress mb-4" role="progressbar"
+     aria-label="Quiz progress"
+     aria-valuenow="<%= $progress %>" aria-valuemin="0" aria-valuemax="<%= $total_questions %>"
+     style="height: 1.5rem;">
+  <div class="progress-bar" id="quiz-progress-bar"
+       style="width: <%= sprintf('%.0f', $progress / $total_questions * 100) %>%;">
+    <%= sprintf('%.0f', $progress / $total_questions * 100) %>%
+  </div>
+</div>
+
+<p class="fs-5"><strong>&ldquo;<%= $question_text %>&rdquo;</strong></p>
+
+%= form_for submit_quiz => (method => 'POST') => begin
+  <%= hidden_field question => $question_num %>
+  <%= hidden_field progress => $progress %>
+
+  <div class="d-flex justify-content-between text-muted small mb-2">
+    <span>Strongly disagree</span>
+    <span>Disagree</span>
+    <span>Maybe</span>
+    <span>Agree</span>
+    <span>Strongly agree</span>
+  </div>
+
+  <div class="d-flex justify-content-between mb-4 answer-scale">
+    % for my $i (1 .. 10) {
+      <div class="form-check text-center">
+        <input class="form-check-input" type="radio" name="answer" id="answer_<%= $i %>" value="<%= $i %>" required>
+        <label class="form-check-label d-block" for="answer_<%= $i %>"><%= $i %></label>
+      </div>
+    % }
+  </div>
+
+  <button id="submit" type="submit" class="btn btn-primary">
+    <%= $progress == $total_questions ? 'Show Results' : 'Next Question' %>
+  </button>
+<% end %>
+
+<%= content_for scripts => begin %>
+<script>
+$(function () {
+    // Progressive enhancement only - the "required" attribute on the
+    // radios already enforces an answer via native browser validation,
+    // so the button works even if this script never runs.
+    $('input[name="answer"]').on('change', function () {
+        $(this).closest('.answer-scale').find('.form-check-label').removeClass('fw-bold text-primary');
+        $(this).next('label').addClass('fw-bold text-primary');
+    });
+});
+</script>
+<% end %>

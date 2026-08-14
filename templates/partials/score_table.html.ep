@@ -1,0 +1,34 @@
+%# Renders one "chart + score table" block.
+%# Expects locals: heading, chart_url, chart_alt, rows (arrayref of
+%# { name => ..., link => ..., prop => ..., score => ..., discord => ..., diff => ... })
+<div class="row g-4 align-items-start mb-5">
+  <div class="col-md-5">
+    <img src="<%= $chart_url %>" class="img-fluid rounded border" alt="<%= $chart_alt %>">
+  </div>
+
+  <div class="col-md-7">
+    <h4><%= $heading %></h4>
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th class="text-end">Proportion</th>
+          <th>Score - Discord = Diff</th>
+        </tr>
+      </thead>
+      <tbody>
+        % for my $row (@$rows) {
+          <tr>
+            <td><a href="https://en.wikipedia.org/wiki/<%= $row->{link} %>"><%= $row->{name} %></a></td>
+            <td class="text-end fw-bold"><%= $row->{prop} %></td>
+            <td>( <%= $row->{score} %> - <%= $row->{discord} %> = <%= $row->{diff} %> )</td>
+          </tr>
+        % }
+      </tbody>
+    </table>
+    <p class="small text-muted mb-0">
+      Red: Score ("disorder")<br>
+      Green: Discord ("dishonesty", "ambivalence", "confusion")
+    </p>
+  </div>
+</div>
