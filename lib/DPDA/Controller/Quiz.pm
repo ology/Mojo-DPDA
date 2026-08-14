@@ -2,6 +2,7 @@ package DPDA::Controller::Quiz;
 
 use Mojo::Base 'Mojolicious::Controller', -signatures;
 
+use GD;
 use GD::Graph::bars;
 use Statistics::Frequency;
 
@@ -214,7 +215,7 @@ sub _order_category ($self, $order, $quiz) {
 }
 
 sub _draw_chart ($self, $size, $order, $results, $discord) {
-    my $graph = GD::Graph::bars->new(500, 400);
+    my $graph = GD::Graph::bars->new(700, 600);
     $graph->set(
         title         => 'Results',
         x_label       => 'Categories',
@@ -223,7 +224,18 @@ sub _draw_chart ($self, $size, $order, $results, $discord) {
         y_tick_number => $size,
         y_label_skip  => 1,
         x_labels_vertical => 1,
+        textclr           => 'black',
+        labelclr          => 'black',
+        axislabelclr      => 'black',
+        legendclr         => 'black',
     ) or die 'Can\'t set graph: ' . $graph->error;
+
+    $graph->set_title_font(GD::gdGiantFont);
+    $graph->set_x_label_font(GD::gdMediumBoldFont);
+    $graph->set_y_label_font(GD::gdMediumBoldFont);
+    $graph->set_x_axis_font(GD::gdMediumBoldFont);
+    $graph->set_y_axis_font(GD::gdMediumBoldFont);
+    $graph->set_legend_font(GD::gdMediumBoldFont);
 
     my @names   = sort { $order->{$a} <=> $order->{$b} } keys %$order;
     my @results = map { $results->{$_} } @names;
