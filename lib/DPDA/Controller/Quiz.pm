@@ -59,6 +59,8 @@ sub question ($self) {
     my $history = $self->session('history') || {};
     my @quiz    = $self->_load_quiz;
 
+    return $self->redirect_to('chart') if keys(%$history) >= @quiz;
+
     my ($question_num, $question_text) = $self->_next_question(\@quiz, $history);
 
     $self->render(
@@ -163,8 +165,10 @@ sub _load_quiz ($self) {
 }
 
 sub _next_question ($self, $questions, $history) {
-    die "History equal to number of questions\n"
-        if keys(%$history) >= @$questions;
+    my $x = keys %$history;
+    my $y = @$questions;
+    die "History equal to number of questions: $x >= $y\n"
+        if $x >= $y;
 
     my $question_num;
     do {
